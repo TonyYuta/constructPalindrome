@@ -8,6 +8,8 @@
 
 package org.challange.constructPalindrome;
 
+import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * FindPalindrome //ADDD (description of class)
@@ -23,13 +25,25 @@ package org.challange.constructPalindrome;
  */
 public class FindPalindrome {
 	
+	ArrayList<String> palList = new ArrayList<>();
+	
 	String reverseString(String str) {
-		boolean result = false;
-	//	String reverse;
-		
+		boolean result = false;		
 		StringBuffer revSb = new StringBuffer(str);
-		//reverse = revSb.reverse().toString();
 		return revSb.reverse().toString();
 	}
+	
+	ArrayList<String> findPalindrome(String inpText) {
+		String[] wordsArr = inpText.split(" ");
+		for(String word: wordsArr) {
+			if(Objects.equals(word, reverseString(word))) {
+				palList.add(word);
+			}
+		}
+System.out.println("palList.toString(): " + palList.toString());
+		return palList;
+	}
+	
+	
 	
 }
