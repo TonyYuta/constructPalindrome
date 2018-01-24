@@ -27,25 +27,40 @@ import org.testng.annotations.Test;
 public class FindPolindromeTest {
 	
 	FindPalindrome fp;
+	Data data;
 	
 	@BeforeClass(alwaysRun = true)
 	public void beforeClassSetUp() {
 		fp = new FindPalindrome();
+		data = new Data();
 	}
 	
-	@Test(enabled = true, groups = {"palindrome", "string", "reverse", "bat", "regression", "all"}, priority = 0)
-	public void testReverseString() {
-		String origin = "Inspired";
-		String expected = "deripsnI";
-		Assert.assertEquals(fp.reverseString(origin), expected, "reversed string doesn't match to expected");
+	@Test(enabled = true, groups = {"palindrome", "string", "combine", "bat", "findpalindrome", "all"}, priority = 1)
+	public void test006findBackwardCombinedWordsPalindrome() {
+		String[] origin = data.modifyText(data.getText04());
+		String expected = "[meem]";
+		Assert.assertEquals(fp.findCombinedWordsPalindrome(origin).toString(), expected, "List combined palindromes doesn't match to expected");
+	}
+
+	@Test(enabled = true, groups = {"palindrome", "string", "combine", "bat", "findpalindrome", "all"}, priority = 1)
+	public void test007findForwardCombinedWordsResortedPalindrome() {
+		String[] origin = data.modifyText(data.getText04());
+		String expected = "usatat asu usatatasu";
+		Assert.assertEquals(fp.findCombinedWordsPalindrome(origin).toString(), expected, "List combined palindromes doesn't match to expected");
 	}
 	
-	@Test(enabled = true, groups = {"palindrome", "string", "bat", "findpalindrome", "all"}, priority = 1)
-	public void testFindPalindrome() {
-		String origin = "me lol killa molli pop myasym";
-		String expected = "[lol, pop]";
-		Assert.assertEquals(fp.findPalindrome(origin).toString(), expected, "List palindromes doesn't match to expected");
-		
+	@Test(enabled = true, groups = {"palindrome", "string", "combine", "bat", "findpalindrome", "all"}, priority = 1)
+	public void test008findForwardCombinedWordsResortedPalindrome() {
+		String[] origin = data.modifyText(data.getText03());
+		String expected = "asutot usa asutotusa";
+		Assert.assertEquals(fp.findCombinedWordsPalindrome(origin).toString(), expected, "List combined palindromes doesn't match to expected");
+	}
+	
+	@Test(enabled = true, groups = {"palindrome", "string", "combine", "bat", "findpalindrome", "all"}, priority = 1)
+	public void test009findForwardCombinedWordsResortedPalindrome() {
+		String[] origin = data.modifyText(data.getText01());
+		String expected = "we new wenew";
+		Assert.assertEquals(fp.findCombinedWordsPalindrome(origin).toString(), expected, "List combined palindromes doesn't match to expected");
 	}
 	
 	
